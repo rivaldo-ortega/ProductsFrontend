@@ -28,7 +28,7 @@ const Product = ({ id, image, title }) => {
 
   return (
     <article className='single-product'>
-      <img src={image} alt='image'></img>
+      <img src={image} alt='imageS'></img>
       <footer>
         <div className='product-info'>
           <h4>{title}</h4>

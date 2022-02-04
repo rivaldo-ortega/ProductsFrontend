@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loading from './Loading';
 import Products from './Products';
 
-const urlProducts = 'https://fakestoreapi.com/products';
+const urlProducts = process.env.API_STORE_URL;
 const MainProduct = () => {
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
