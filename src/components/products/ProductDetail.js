@@ -9,7 +9,7 @@ const ProductDetail = () => {
   const { title, price, description, category, image } = character;
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`${process.env.API_STORE_URL}/${id}`)
       .then((resp) => resp.json())
       .then((data) => setCharacter(data));
   }, [id]);

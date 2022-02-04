@@ -3,7 +3,7 @@ import people from './dataAbout';
 import { FaGithub } from 'react-icons/fa';
 
 const About = () => {
-  const [index, setIndex] = useState(0);
+  const [index] = useState(0);
   const { name, email, github, image, text } = people[index];
 
   return (
