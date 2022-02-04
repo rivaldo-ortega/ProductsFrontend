@@ -1,0 +1,61 @@
+import React from 'react';
+
+import { FaBars } from 'react-icons/fa';
+import { useGlobalContext } from './context';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+  const { openSidebar, closeSubmenu, openSubmenu } = useGlobalContext();
+  const displaySubmenu = (e) => {
+    const page = e.target.textContent;
+    const tempBtn = e.target.getBoundingClientRect();
+    const center = (tempBtn.left + tempBtn.right) / 2;
+    const botton = tempBtn.botton - 3;
+    console.log(center, botton, page);
+    openSubmenu(page, { center, botton });
+  };
+  const handleSubmenu = (e) => {
+    if (!e.target.classList.contains('link-btn')) {
+      closeSubmenu();
+    }
+  };
+  return (
+    <nav className='nav' onMouseOver={handleSubmenu}>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <Link to={`/`}></Link>
+
+          <button className='btn toggle-btn' onClick={openSidebar}>
+            <FaBars />
+          </button>
+        </div>
+
+        <ul className='nav-links'>
+          <Link to={`/products`}>
+            <li>
+              <button className='link-btn' onMouseOver={displaySubmenu}>
+                products
+              </button>
+            </li>
+          </Link>
+          <Link to={`/about`}>
+            <li>
+              <button className='link-btn' onMouseOver={displaySubmenu}>
+                about
+              </button>
+            </li>
+          </Link>
+
+          <li>
+            <button className='link-btn' onMouseOver={displaySubmenu}>
+              company
+            </button>
+          </li>
+        </ul>
+        <button className='btn signin-btn'>sign in</button>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
